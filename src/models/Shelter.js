@@ -1,7 +1,7 @@
 // models/Data.js
 
 const { DataTypes } = require('sequelize');
-const sequelize = require('../database/sequelize');
+const sequelize = require('../databases/sequelize');
 //define 테이블과 shelter 테이블명 만들어줌(근데 저장 shelters로 되는건 자동인듯...)
 const Shelter = sequelize.define('shelter', {
   ssNm: {

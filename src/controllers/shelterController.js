@@ -1,41 +1,11 @@
 // shelterController.js
-
-const axios = require('axios');
+//fetchShelterData 함수를 이용하여 데이터 가져옴-> getShelter 함수에서는 가져온 데이터를 응답으로 전송
 const Shelter = require('../models/Shelter');
-const config = require('../config/config');
+const fetchShelterData = require('../services/shelterService');
 
 const getShelter = async (req, res) => {
   try {
-    const response = await axios.get(config.API_ENDPOINT, { params: config.API_PARAMS });
-    const result = response.data;
-    //console.log(config.API_ENDPOINT);
-    const rows = result.TbGtnVictP.row;
-    const data = rows.map((row) => ({
-      ssNm: row.SD_NM,
-      sggNm: row.SGG_NM,
-      gbAcmd: row.GB_ACMD,
-      equpNm: row.EQUP_NM,
-      locSfprA: row.LOC_SFPR_A,
-    }));
-
-    await Shelter.sync();
-    for (const item of data) {
-      const [dbShelter, created] = await Shelter.findOrCreate({
-        where: {
-          ssNm: item.ssNm,
-          sggNm: item.sggNm,
-          gbAcmd: item.gbAcmd,
-          equpNm: item.equpNm,
-          locSfprA: item.locSfprA,
-        },
-        defaults: item,
-      });
-      // 중복된 데이터가 있을 경우
-      if (!created) {
-        // 기존 데이터 업데이트 수행
-        dbShelter.update(item);
-      }
-    }
+    const data = await fetchShelterData();
     res.json(data);
   } catch (error) {
     console.error(error);

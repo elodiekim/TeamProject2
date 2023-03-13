@@ -5,11 +5,11 @@ require('dotenv').config();
 //npm install dotenv 해주고 .env 파일에서 설정된 환경 변수를 로드(.env파일 만들어서 param입력해주세요)
 
 const API_PARAMS = {
-    KEY: process.env.API_KEY,
-    TYPE: process.env.API_TYPE,
-    SERVICE: process.env.API_SERVICE,
-    START_INDEX: process.env.API_START_INDEX,
-    END_INDEX: process.env.API_END_INDEX,
+    KEY: process.env.Shelter_KEY,
+    TYPE: process.env.Shelter_TYPE,
+    SERVICE: process.env.Shelter_SERVICE,
+    START_INDEX: process.env.Shelter_START_INDEX,
+    END_INDEX: process.env.Shelter_END_INDEX,
   };
     
 const apiConfig = {

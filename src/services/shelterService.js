@@ -1,7 +1,7 @@
 // shelterService.js
 const axios = require('axios');
 const Shelter = require('../models/Shelter');
-const config = require('../config/apiConfig');
+const config = require('../config/shelterConfig');
 const sequelize = require('../databases/sequelize');
 
 const fetchShelterData = async () => {
@@ -21,7 +21,7 @@ const fetchShelterData = async () => {
         yCord: row.YCORD, //경도
       }));
   
-      //await Shelter.sync();//Shelter 테이블이 존재하지 않으면 테이블을 생성
+      await Shelter.sync();//Shelter 테이블이 존재하지 않으면 테이블을 생성
       await sequelize.sync(); // 모든 모델을 동기화->모델이 이미 존재하면 아무 작업도 하지않음
       for (const item of data) {
         const [dbShelter, created] = await Shelter.findOrCreate({

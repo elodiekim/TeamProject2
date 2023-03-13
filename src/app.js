@@ -1,10 +1,12 @@
 const express = require('express');
 const sequelize = require('./databases/sequelize');
 const shelterRouter = require('./routes/shelterRouter');
+//const rainRouter = require('./routes/rainRouter');
 const app = express();
 
 app.use(express.json());
 app.use('/shelter', shelterRouter);
+//app.use('/rain', rainRouter);
 
 const PORT = process.env.PORT || 3000;
 

@@ -12,9 +12,9 @@ const API_PARAMS = {
     END_INDEX: process.env.API_END_INDEX,
   };
     
-const config = {
+const apiConfig = {
     API_ENDPOINT: `http://openapi.seoul.go.kr:8088/${API_PARAMS.KEY}/json/${API_PARAMS.SERVICE}/${API_PARAMS.START_INDEX}/${API_PARAMS.END_INDEX}`,
-    API_PARAMS,
+    API_PARAMS
     };
     
-module.exports = config;
+module.exports = apiConfig;

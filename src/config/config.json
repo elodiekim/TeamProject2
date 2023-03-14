@@ -1,0 +1,9 @@
+{
+  "development": {
+  "username": "test7",
+  "password": "00000000",
+  "database": "chilling",
+  "host": "test7.cuqvvi9btnck.ap-northeast-2.rds.amazonaws.com",
+  "dialect": "mysql"
+}
+}

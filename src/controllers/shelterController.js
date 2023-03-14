@@ -8,7 +8,7 @@ const getShelter = async (req, res) => {
     const data = await fetchShelterData();
     res.json(data);
   } catch (error) {
-    console.error(error.message);
+    //console.error(error.message);
     //데이터 유효성 검사(validation)에 실패하여 요청이 잘못된 경우
     if (error.message.includes("Validation error")) { 
       res.status(400).json({ message: "중복된 API 요청입니다." });

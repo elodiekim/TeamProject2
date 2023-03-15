@@ -2,7 +2,7 @@ const express = require('express');
 const sequelize = require('./databases/sequelize');
 const shelterRouter = require('./routes/shelterRouter');
 //const rainRouter = require('./routes/rainRouter');
-const fireRouter = require('./routes/fireRouter');
+//const fireRouter = require('./routes/fireRouter');
 const app = express();
 const cors = require('cors');
 
@@ -11,7 +11,7 @@ app.use(express.json());
 
 app.use('/shelter', shelterRouter);
 //app.use('/rain', rainRouter);
-app.use('/fire',fireRouter);
+//app.use('/fire',fireRouter);
 
 const PORT = process.env.PORT || 3000;
 

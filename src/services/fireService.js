@@ -1,6 +1,6 @@
 const csvtojson = require('csvtojson');//CSV 파일을 JSON 배열로 변환
-const Fire = require('../models/Fire');
-const sequelize = require('../databases/sequelize');
+const Fire = require('../../models/Fire');
+const sequelize = require('../../databases/sequelize');
 
 const fetchFireData = async () => {
   try {

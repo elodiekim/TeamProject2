@@ -13,7 +13,7 @@ app.use('/shelter', shelterRouter);
 //app.use('/rain', rainRouter);
 //app.use('/fire',fireRouter);
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8000;
 
 app.listen(PORT, async () => {
   try {

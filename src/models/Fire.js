@@ -1,28 +1,23 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../databases/sequelize');
 
-const Fire = sequelize.define('Fire', {
-  guNm: { // '구별' 
-    type: DataTypes.STRING,
+const Fire = sequelize.define("Fire", {
+  union_district: {
+    type: DataTypes.TEXT,
+    primaryKey: true,
     allowNull: false,
-    unique: true,
   },
-  year2020: { // '2020년' 
+  year_total: {
+    // '2년치 합계'
     type: DataTypes.INTEGER,
     allowNull: false,
   },
-  year2021: { // '2021년' 
-    type: DataTypes.INTEGER,
+  year_avg: {
+    // '2년치 평균'
+    type: DataTypes.DOUBLE,
     allowNull: false,
   },
-  sum: { // '2년치 합' 
-    type: DataTypes.INTEGER,
-    allowNull: false,
-  },
-  avg: { // '2년치 평균'
-    type: DataTypes.FLOAT,
-    allowNull: false,
-  },
+}, {
+  timestamps: false // timestamps 비활성화
 });
-
 module.exports = Fire;

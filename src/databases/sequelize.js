@@ -11,6 +11,9 @@ const sequelize = new Sequelize(
       host: config.development.host,
       dialect: config.development.dialect,
       logging:false,
+      // define: {
+      //   timestamps: false // true이면 createdAt, updatedAt 컬럼을 자동으로 생성
+      // }
     },
   );
 

@@ -1,3 +1,4 @@
+// models/Fire.js
 const { DataTypes } = require('sequelize');
 const sequelize = require('../databases/sequelize');
 

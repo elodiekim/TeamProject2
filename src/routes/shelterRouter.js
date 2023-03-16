@@ -1,4 +1,4 @@
-
+// routes/shelter.js
 const express = require('express');
 const router = express.Router();
 const { getShelter, getShelterData } = require('../controllers/shelterController');

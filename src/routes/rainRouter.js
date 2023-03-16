@@ -1,9 +1,8 @@
-
+// routes/rainRouter.js
 const express = require('express');
 const router = express.Router();
-const { getRain, getRainData } = require('../controllers/rainController');
+const getRainData = require('../controllers/rainController');
 
-router.get('/call', getRain); //공공데이터 호출
 router.get('/', getRainData); //DB에 저장되어 있는 데이터
 
 module.exports = router;

@@ -23,6 +23,11 @@ const Shelter = sequelize.define('Shelter', {
         type: DataTypes.STRING,
         allowNull: false,
     },
+    qty:{
+        type: DataTypes.INTEGER,
+        allowNull: false,
+
+    },
     xCord: {
         type: DataTypes.DOUBLE,
         allowNull: false,

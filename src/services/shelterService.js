@@ -17,6 +17,7 @@ const fetchShelterData = async () => {
         shelterType: row.GB_ACMD, //시설구분명  shelterType
         shelterNm: row.EQUP_NM,//시설명 shelterNm
         address: row.LOC_SFPR_A,//주소 address
+        qty: row.QTY_CPTY,
         xCord: row.XCORD, //위도
         yCord: row.YCORD, //경도
       }));

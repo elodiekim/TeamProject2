@@ -5,7 +5,7 @@ const sequelize = require('../databases/sequelize');
 const fetchRainData = async () => {
   try {
     const data = await Rain.findAll();
-    await sequelize.sync();
+    //await sequelize.sync();
     return data;
   } catch (error) {
     console.error(error);

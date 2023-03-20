@@ -7,7 +7,6 @@ const getFireData = async (req, res) => {
     const data = await fetchFirerData();
     res.json(data);
   } catch (error) {
-    console.error(error);
     res.status(500).json({ message: error.message });
   }
 };

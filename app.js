@@ -4,6 +4,7 @@ const sequelize = require('./src/databases/sequelize.js');
 const shelterRouter = require('./src/routes/shelterRouter');
 const rainRouter = require('./src/routes/rainRouter');
 const fireRouter = require('./src/routes/fireRouter');
+const postRouter = require('./src/routes/postRouter');
 const app = express();
 const cors = require('cors');
 
@@ -14,12 +15,15 @@ app.use('/shelter', shelterRouter);
 app.use('/rain', rainRouter);
 app.use('/fire',fireRouter);
 
+app.use('/post', postRouter);
+
 const PORT = process.env.PORT || 8000;
 
 app.listen(PORT, async () => {
   try {
     await sequelize.authenticate();
     console.log('데이터베이스 연결 성공');
+    await sequelize.sync(); //모델 구조 동기화
   } catch (error) {
     console.error('데이터베이스 연결 실패');
   }

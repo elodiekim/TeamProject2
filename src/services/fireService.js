@@ -6,7 +6,7 @@ const sequelize = require('../databases/sequelize');
 const fetchFirerData = async () => {
   try {
     const data = await Fire.findAll();
-    await sequelize.sync();
+    //await sequelize.sync();
     return data;
   } catch (error) {
     console.error(error);

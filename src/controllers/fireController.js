@@ -1,19 +1,16 @@
 // fireController.js
-
-const Fire = require('../models/Fire');
-const fetchFireData = require('../services/fireService');
-
-// 데이터를 먼저 저장한 뒤에 getFireData 함수에서 데이터를 가져옴
-fetchFireData();
+//클라이언트로부터 요청을 받아 응답을 반환하는 역할
+const fetchFirerData = require('../services/fireService');
 
 const getFireData = async (req, res) => {
   try {
-    const data = await Fire.findAll();
+    const data = await fetchFirerData();
     res.json(data);
   } catch (error) {
-    console.error(error);
     res.status(500).json({ message: error.message });
   }
 };
 
 module.exports = getFireData;
+
+

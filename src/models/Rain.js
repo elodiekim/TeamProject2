@@ -1,3 +1,4 @@
+// models/Rain.js
 const { DataTypes } = require('sequelize');
 const sequelize = require('../databases/sequelize');
 const Rain = sequelize.define('Rain', {

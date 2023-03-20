@@ -17,19 +17,20 @@ const fetchShelterData = async () => {
         shelterType: row.GB_ACMD, //시설구분명  shelterType
         shelterNm: row.EQUP_NM,//시설명 shelterNm
         address: row.LOC_SFPR_A,//주소 address
+        qty: row.QTY_CPTY,
         xCord: row.XCORD, //위도
         yCord: row.YCORD, //경도
       }));
   
-      await Shelter.sync();//Shelter 테이블이 존재하지 않으면 테이블을 생성
-      await sequelize.sync(); // 모든 모델을 동기화->모델이 이미 존재하면 아무 작업도 하지않음
+      //await Shelter.sync();//Shelter 테이블이 존재하지 않으면 테이블을 생성
+      //await sequelize.sync(); // 모든 모델을 동기화->모델이 이미 존재하면 아무 작업도 하지않음
       //console.log('##################'+data.length)
     
       const createdData = await Shelter.bulkCreate(data)
       return createdData;
       
     } catch (error) {
-      //console.error(error);
+      console.error(error);
       throw new Error(error.message);
     }
   };

@@ -37,3 +37,14 @@ exports.deletePost = async (req, res, next) => {
         res.status(500).json({ error: error.message });
     }
 };
+
+exports.updatePost = async (req, res, next) => {
+    const { postId } = req.params;
+    const { password, title, content } = req.body;
+    try {
+        const post = await updatePost(postId, password, title, content);
+        res.status(200).json({ message: '게시물이 수정되었습니다.' ,post });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+};

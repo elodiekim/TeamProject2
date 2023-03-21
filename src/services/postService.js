@@ -39,7 +39,7 @@ const createPost = async (userNm, password, title, content) => {
       throw new Error(error.message);
     }
   };
-
+//게시글 조회
 const fetchAllPosts = async () => {
   try {
     const posts = await Post.findAll();
@@ -51,27 +51,71 @@ const fetchAllPosts = async () => {
   }
 };
 
-const deletePost = async (postId, password) => {
+//게시글 수정
+const updatePost = async (postId, password, title, content) => {
+    if (!postId || !password || !title || !content) {
+      throw new Error('모든 필드는 필수입니다.');
+    }
+  
     try {
       const post = await Post.findByPk(postId, {
         attributes: ['password', 'salt'],
         raw: true,
       });
-
+  
+      if (!post) {
+        throw new Error('해당하는 게시글이 없습니다.');
+      }
+  
+      const { password: hashedPassword, salt } = post;
+  
+      const hashedInputPassword = await new Promise((resolve, reject) => {
+        crypto.pbkdf2(password, salt, 9999, 64, 'sha512', (err, key) => {
+          if (err) reject(err);
+          resolve(key.toString('base64'));
+        });
+      });
+  
+      if (hashedPassword !== hashedInputPassword) {
+        throw new Error('비밀번호가 일치하지 않습니다.');
+      }
+  
+      const updatedPost = await Post.update(
+        { title, content },
+        { where: { postId } }
+      );
+  
+      console.log('게시물 수정 완료');
+      return updatedPost;
+    } catch (error) {
+      console.log(error);
+      throw new Error(error.message);
+    }
+  };
+  
+  
+  
+  
+const deletePost = async (postId, password) => {
+    try {
+      const post = await Post.findByPk(postId, {
+        attributes: ['password', 'salt'],
+        raw: true,//json 형태
+      });
+      //console.log('11111111111', post);
       if (!post) {
         throw new Error('해당하는 게시글이 없습니다.');
       }
       //hashedPassword-데이터베이스에서 조회된 게시물의 비밀번호
       const { password: hashedPassword, salt } = post;
-      const hashedInputPassword = () =>
-        new Promise((resolve, reject) => {
-            crypto.pbkdf2( password, salt, 9999, 64, 'sha512', (err, key) => {
-                if (err) reject(err);
-                resolve(key.toString('base64'));
-            }
-            );
+      //console.log('222222222222', post);
+      const hashedInputPassword = await new Promise((resolve, reject) => {
+        crypto.pbkdf2(password, salt, 9999, 64, 'sha512', (err, key) => {
+          if (err) reject(err);
+          resolve(key.toString('base64'));
         });
-  
+      });
+
       if (hashedPassword !== hashedInputPassword) {
         throw new Error('비밀번호가 일치하지 않습니다.');
       }
@@ -87,4 +131,4 @@ const deletePost = async (postId, password) => {
     }
   };
 
-module.exports = { createPost, fetchAllPosts, deletePost };
+module.exports = { createPost, fetchAllPosts, updatePost, deletePost };

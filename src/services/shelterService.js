@@ -4,6 +4,7 @@ const Shelter = require('../models/Shelter');
 const config = require('../config/shelterConfig');
 const sequelize = require('../databases/sequelize');
 
+
 const fetchShelterData = async () => {
     try {
       const response = await axios.get(config.API_ENDPOINT, { params: config.API_PARAMS });
@@ -35,4 +36,32 @@ const fetchShelterData = async () => {
     }
   };
 
-  module.exports = fetchShelterData;
+  const getShelterData = async () => {
+    try{
+      const data = await Shelter.findAll();
+      return data;
+
+    }catch{
+      console.log(error);
+      throw new Error(error.message)
+
+    }
+  }
+
+  const getGuNmShelterData = async (guNm) => {
+    try{
+
+      const data = await Shelter.findAll({
+        where:{ guNm },
+    });
+    return data;
+
+    }catch{
+      console.log(error);
+      throw new Error(error.message)
+
+    }
+  }
+
+
+  module.exports = { fetchShelterData, getShelterData, getGuNmShelterData };

@@ -63,7 +63,8 @@ function CreatePost() {
         <br />
         <button type="submit">작성</button>
       </form>
-      <div>
+      {/* 아래 코드 작성시 데이터 실시간으로 확인 가능,,,왜인지는 모르겠어요,,,,^^,,, */}
+      {/* <div>
         {createPost.map((post) => (
           <div key={post.id}>
             <h2>{post.title}</h2>
@@ -72,7 +73,7 @@ function CreatePost() {
             <p>{post.password}</p>
           </div>
         ))}
-      </div>
+      </div> */}
     </div>
   );
 }

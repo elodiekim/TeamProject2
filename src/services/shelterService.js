@@ -34,5 +34,5 @@ const fetchShelterData = async () => {
       throw new Error(error.message);
     }
   };
-  
+
   module.exports = fetchShelterData;

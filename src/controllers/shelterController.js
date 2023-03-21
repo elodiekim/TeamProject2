@@ -27,4 +27,17 @@ const getShelterData = async (req, res) => {
   }
 };
 
-module.exports = { getShelter, getShelterData };
+const getGuNmShelter = async(req, res) =>{
+  try{
+    const { guNm } =req.params;
+    console.log(req.params);
+    const data = await Shelter.findAll({
+      where:{ guNm },
+    });
+    res.status(200).json(data);
+  }catch(error){
+    res.status(400).json({ message: error.message })
+  }
+};
+
+module.exports = { getShelter, getShelterData ,getGuNmShelter};

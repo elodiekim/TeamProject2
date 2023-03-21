@@ -36,7 +36,7 @@ const Shelter = sequelize.define('Shelter', {
         type: DataTypes.DOUBLE,
         allowNull: false,
     },
-
-});
-
+}, {
+    timestamps: false // timestamps 비활성화
+  });
 module.exports = Shelter;

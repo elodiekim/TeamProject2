@@ -34,6 +34,7 @@ const Post = sequelize.define('Post', {
     }, {
     modelName: 'Post',
     tableName: 'Posts',
+    timestamps: true, // timestamps 설정 추가
     });
     
     module.exports = Post;

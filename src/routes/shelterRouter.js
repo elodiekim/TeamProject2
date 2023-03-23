@@ -6,4 +6,5 @@ const { getData, getShelter, getGuNmShelter } = require('../controllers/shelterC
 router.get('/call', getData); //공공데이터 호출
 router.get('/', getShelter); //DB에 저장되어 있는 데이터
 router.get('/:guNm',getGuNmShelter);
+
 module.exports = router;

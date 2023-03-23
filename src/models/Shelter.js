@@ -36,7 +36,12 @@ const Shelter = sequelize.define('Shelter', {
         type: DataTypes.DOUBLE,
         allowNull: false,
     },
+    union_district: {
+        type: DataTypes.STRING,
+        allowNull: true,
+    },
 }, {
     timestamps: false // timestamps 비활성화
   });
+
 module.exports = Shelter;

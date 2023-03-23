@@ -1,29 +1,27 @@
 // controllers/postController.js
 const { createPostData, fetchAllPosts, updatePostData ,deletePostData } = require('../services/postService');
 
-exports.createPost = async (req, res, next) => {
+exports.createPost = async (req, res) => {
     const { userNm, password, title, content } = req.body;
     //console.log(req.body);
     try {
         const post = await createPostData(userNm, password, title, content);
         res.status(201).json({ message: '게시물이 작성되었습니다.', post });//Created 상태 코드
     } catch (error) {
-        //next(error);
         res.status(500).json({ error: error.message });
     }
 };
 
-exports.getAllPosts = async (req, res, next) => {
+exports.getAllPosts = async (req, res) => {
     try {
         const posts = await fetchAllPosts();
         res.status(200).json(posts)
     } catch (error) {
-        //next(error);
         res.status(500).json({ message: error.message });
     }
 };
 
-exports.deletePost = async (req, res, next) => {
+exports.deletePost = async (req, res) => {
     const { postId } = req.params; 
     //console.log(req.params.postId);
     const { password } = req.body;
@@ -39,7 +37,7 @@ exports.deletePost = async (req, res, next) => {
     }
 };
 
-exports.updatePost = async (req, res, next) => {
+exports.updatePost = async (req, res) => {
     const { postId } = req.params;
     const { userNm, password, title, content } = req.body;
     try {

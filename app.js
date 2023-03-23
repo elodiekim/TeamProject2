@@ -5,6 +5,8 @@ const shelterRouter = require('./src/routes/shelterRouter');
 const rainRouter = require('./src/routes/rainRouter');
 const fireRouter = require('./src/routes/fireRouter');
 const postRouter = require('./src/routes/postRouter');
+const ShelterDistrictRouter = require('./src/routes/ShelterDistrictRouter');
+
 const app = express();
 const cors = require('cors');
 
@@ -16,6 +18,8 @@ app.use('/rain', rainRouter);
 app.use('/fire',fireRouter);
 
 app.use('/post', postRouter);
+
+app.use('/shelterDistrict', ShelterDistrictRouter);
 
 const PORT = process.env.PORT || 8000;
 

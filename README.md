@@ -10,3 +10,9 @@ config: API를 호출하기 위해 필요한 매개변수를 저장
 app.js: API를 정의하고 서버를 시작하는 역할  
 migrations: 기존 테이블에서 데이터 변경 시 마이그레이션  
 
+##Branch 관리
+< master → dev → feature\_(개인이니셜) >
+
+- git checkout -b <branch명> 확인
+- git pull origin <branch명> 사용
+

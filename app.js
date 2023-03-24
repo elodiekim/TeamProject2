@@ -16,7 +16,6 @@ app.use(express.json());
 app.use("/shelter", shelterRouter);
 app.use("/rain", rainRouter);
 app.use("/fire", fireRouter);
-
 app.use("/post", postRouter);
 app.use((req, res) => {
   res.sendFile(path.join(__dirname, "build/index.html"));
